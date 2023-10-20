@@ -1,0 +1,142 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_010487B8 .scope module, "fulladd_tb" "fulladd_tb" 2 1;
+ .timescale 0 0;
+v01080470_0 .var "aa", 0 0;
+v010804C8_0 .var "bb", 0 0;
+v01080578_0 .var "cc", 0 0;
+v010AD8C8_0 .net "cy", 0 0, L_01080C18; 1 drivers
+v010ADBE0_0 .net "ss", 0 0, L_01043CE0; 1 drivers
+S_01072560 .scope module, "add1" "fulladd" 2 7, 3 1, S_010487B8;
+ .timescale 0 0;
+v010806D8_0 .net "a", 0 0, v01080470_0; 1 drivers
+v01080260_0 .net "b", 0 0, v010804C8_0; 1 drivers
+v010802B8_0 .net "cin", 0 0, v01080578_0; 1 drivers
+v01080310_0 .alias "cout", 0 0, v010AD8C8_0;
+v010803C0_0 .alias "sum", 0 0, v010ADBE0_0;
+RS_01084154/0/0 .resolv tri, L_010ADA80, L_010ADAD8, L_010AD3A0, L_010AD348;
+RS_01084154/0/4 .resolv tri, L_010AD190, C4<zzzzz>, C4<zzzzz>, C4<zzzzz>;
+RS_01084154 .resolv tri, RS_01084154/0/0, RS_01084154/0/4, C4<zzzzz>, C4<zzzzz>;
+v01080418_0 .net8 "t", 4 0, RS_01084154; 5 drivers
+L_010ADA80 .part/pv L_01044F68, 0, 1, 5;
+L_010ADA28 .part RS_01084154, 0, 1;
+L_010ADAD8 .part/pv L_01080A90, 1, 1, 5;
+L_010AD3A0 .part/pv L_01080BE0, 2, 1, 5;
+L_010AD348 .part/pv L_01080AC8, 3, 1, 5;
+L_010AD6B8 .part RS_01084154, 1, 1;
+L_010AD710 .part RS_01084154, 2, 1;
+L_010AD190 .part/pv L_01080B70, 4, 1, 5;
+L_010ACF80 .part RS_01084154, 3, 1;
+L_010AD5B0 .part RS_01084154, 4, 1;
+S_01071E78 .scope module, "x0" "xor2" 3 4, 4 13, S_01072560;
+ .timescale 0 0;
+L_01044F68 .functor XOR 1, v01080470_0, v010804C8_0, C4<0>, C4<0>;
+v01080100_0 .alias "i0", 0 0, v010806D8_0;
+v01080158_0 .alias "i1", 0 0, v01080260_0;
+v01080208_0 .net "o4", 0 0, L_01044F68; 1 drivers
+S_01072120 .scope module, "x1" "xor2" 3 5, 4 13, S_01072560;
+ .timescale 0 0;
+L_01043CE0 .functor XOR 1, L_010ADA28, v01080578_0, C4<0>, C4<0>;
+v010807E0_0 .net "i0", 0 0, L_010ADA28; 1 drivers
+v010801B0_0 .alias "i1", 0 0, v010802B8_0;
+v01080838_0 .alias "o4", 0 0, v010ADBE0_0;
+S_010719B0 .scope module, "a0" "and2" 3 7, 4 5, S_01072560;
+ .timescale 0 0;
+L_01080A90 .functor AND 1, v01080470_0, v010804C8_0, C4<1>, C4<1>;
+v01080368_0 .alias "i0", 0 0, v010806D8_0;
+v01080788_0 .alias "i1", 0 0, v01080260_0;
+v010805D0_0 .net "o2", 0 0, L_01080A90; 1 drivers
+S_01072780 .scope module, "a1" "and2" 3 8, 4 5, S_01072560;
+ .timescale 0 0;
+L_01080BE0 .functor AND 1, v01080470_0, v01080578_0, C4<1>, C4<1>;
+v01080730_0 .alias "i0", 0 0, v010806D8_0;
+v01080680_0 .alias "i1", 0 0, v010802B8_0;
+v01080520_0 .net "o2", 0 0, L_01080BE0; 1 drivers
+S_01072010 .scope module, "a2" "and2" 3 9, 4 5, S_01072560;
+ .timescale 0 0;
+L_01080AC8 .functor AND 1, v010804C8_0, v01080578_0, C4<1>, C4<1>;
+v01043AB0_0 .alias "i0", 0 0, v01080260_0;
+v01044EA0_0 .alias "i1", 0 0, v010802B8_0;
+v01080628_0 .net "o2", 0 0, L_01080AC8; 1 drivers
+S_01071DF0 .scope module, "o0" "or2" 3 11, 4 9, S_01072560;
+ .timescale 0 0;
+L_01080B70 .functor OR 1, L_010AD6B8, L_010AD710, C4<0>, C4<0>;
+v0104B0D8_0 .net "i0", 0 0, L_010AD6B8; 1 drivers
+v01043A00_0 .net "i1", 0 0, L_010AD710; 1 drivers
+v01043A58_0 .net "o3", 0 0, L_01080B70; 1 drivers
+S_01072918 .scope module, "o1" "or2" 3 12, 4 9, S_01072560;
+ .timescale 0 0;
+L_01080C18 .functor OR 1, L_010ACF80, L_010AD5B0, C4<0>, C4<0>;
+v0104A1B8_0 .net "i0", 0 0, L_010ACF80; 1 drivers
+v0104B028_0 .net "i1", 0 0, L_010AD5B0; 1 drivers
+v0104B080_0 .alias "o3", 0 0, v010AD8C8_0;
+S_01071BD0 .scope module, "nand2" "nand2" 4 17;
+ .timescale 0 0;
+v010ADB88_0 .net "i0", 0 0, C4<z>; 0 drivers
+v010AD818_0 .net "i1", 0 0, C4<z>; 0 drivers
+v010AD870_0 .net "o5", 0 0, L_010AD030; 1 drivers
+v010AD9D0_0 .net "t", 0 0, L_01080BA8; 1 drivers
+S_010722B8 .scope module, "and2_0" "and2" 4 19, 4 5, S_01071BD0;
+ .timescale 0 0;
+L_01080BA8 .functor AND 1, C4<z>, C4<z>, C4<1>, C4<1>;
+v010ADB30_0 .alias "i0", 0 0, v010ADB88_0;
+v010AD768_0 .alias "i1", 0 0, v010AD818_0;
+v010AD7C0_0 .alias "o2", 0 0, v010AD9D0_0;
+S_010724D8 .scope module, "invert_0" "invert" 4 20, 4 1, S_01071BD0;
+ .timescale 0 0;
+v010AD920_0 .alias "i", 0 0, v010AD9D0_0;
+v010AD978_0 .alias "o1", 0 0, v010AD870_0;
+L_010AD030 .reduce/nor L_01080BA8;
+    .scope S_010487B8;
+T_0 ;
+    %vpi_call 2 13 "$dumpfile", "fulladd_test.vcd";
+    %vpi_call 2 15 "$dumpvars", 1'sb0, S_010487B8;
+    %end;
+    .thread T_0;
+    .scope S_010487B8;
+T_1 ;
+    %vpi_call 2 22 "$monitor", $time, "a=%b, b=%b, c=%b,sum=%b,carry=%b", v01080470_0, v010804C8_0, v01080578_0, v010ADBE0_0, v010AD8C8_0;
+    %set/v v01080470_0, 0, 1;
+    %set/v v010804C8_0, 0, 1;
+    %set/v v01080578_0, 0, 1;
+    %delay 5, 0;
+    %set/v v01080470_0, 0, 1;
+    %set/v v010804C8_0, 0, 1;
+    %set/v v01080578_0, 1, 1;
+    %delay 5, 0;
+    %set/v v01080470_0, 0, 1;
+    %set/v v010804C8_0, 1, 1;
+    %set/v v01080578_0, 0, 1;
+    %delay 5, 0;
+    %set/v v01080470_0, 0, 1;
+    %set/v v010804C8_0, 1, 1;
+    %set/v v01080578_0, 1, 1;
+    %delay 5, 0;
+    %set/v v01080470_0, 1, 1;
+    %set/v v010804C8_0, 0, 1;
+    %set/v v01080578_0, 0, 1;
+    %delay 5, 0;
+    %set/v v01080470_0, 1, 1;
+    %set/v v010804C8_0, 0, 1;
+    %set/v v01080578_0, 1, 1;
+    %delay 5, 0;
+    %set/v v01080470_0, 1, 1;
+    %set/v v010804C8_0, 1, 1;
+    %set/v v01080578_0, 0, 1;
+    %delay 5, 0;
+    %set/v v01080470_0, 0, 1;
+    %set/v v010804C8_0, 1, 1;
+    %set/v v01080578_0, 1, 1;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "fulladd_tb.v";
+    "fulladd.v";
+    "basic.v";
