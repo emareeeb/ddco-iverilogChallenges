@@ -101,3 +101,4 @@ Welcome to the Digital Design and Computer Organization Laboratory. This Read Me
 This document serves as a guide for understanding Verilog basics, installing the Icarus Verilog compiler, and viewing waveforms for digital design and computer organization experiments.
 
 Enjoy your Verilog learning journey! 🌟🔌📊📈
+//linking pending
