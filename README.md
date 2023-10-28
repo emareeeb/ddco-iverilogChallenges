@@ -2,7 +2,7 @@
 
 Welcome to the Digital Design and Computer Organization Laboratory. This Read Me file provides a structured overview of the content and clear instructions for a seamless learning experience.
 
-## Table of Contents
+## Table of Contents:
 
 ### Section 1: 📖 Introduction
 1.1 Verilog Language Basics
@@ -102,3 +102,5 @@ This document serves as a guide for understanding Verilog basics, installing the
 
 Enjoy your Verilog learning journey! 🌟🔌📊📈
 //linking pending
+
+//linking req
